@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :relationships
-  has_many :friends, through: :relationships, source: :friend
+  has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'friend_id'
   has_many :friends, through: :reverse_of_relationships, source: :user
 

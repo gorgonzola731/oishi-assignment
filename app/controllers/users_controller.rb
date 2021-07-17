@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @users = if params[:category_name]
+    @users = User.all.select('id, name, friends AS ')
 
-               Category.joins(:ideas).select('ideas.id, name AS category, body').where(name: params[:category_name])
-             else
-               Category.joins(:ideas).select('ideas.id, name AS category, body')
-             end
-
-    render json: { data: @ideas }
+    render json: { data: @users }
   end
 end

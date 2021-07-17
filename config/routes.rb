@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :user
+  resources :users
   resources :relationships, only: [:create, :destroy]
 end
