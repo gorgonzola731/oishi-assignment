@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 2021_07_15_072940) do
 
   create_table "relationships", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "friend_id"
+    t.bigint "follow_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["friend_id"], name: "index_relationships_on_friend_id"
-    t.index ["user_id", "friend_id"], name: "index_relationships_on_user_id_and_friend_id", unique: true
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
@@ -32,5 +32,5 @@ ActiveRecord::Schema.define(version: 2021_07_15_072940) do
   end
 
   add_foreign_key "relationships", "users"
-  add_foreign_key "relationships", "users", column: "friend_id"
+  add_foreign_key "relationships", "users", column: "follow_id"
 end
